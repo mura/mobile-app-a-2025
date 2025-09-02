@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">モバイルアプリ開発A</string>
+    <string name="text_sample">てすと</string>
+    <string name="text1">MainActivity!</string>
 </resources>
