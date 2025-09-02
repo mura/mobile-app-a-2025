@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,34 +26,25 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // ここから
         prefDataStore = PrefDataStore.getInstance(this);
         binding.saveButton.setOnClickListener(view -> {
             var text = binding.editTextText.getText().toString();
             prefDataStore.setString("name", text);
         });
-        // ここまで
 
         binding.text.setText(R.string.text1);
         binding.button.setOnClickListener((view) -> {
             var text = binding.editTextText.getText().toString();
             binding.text.setText(text);
         });
-        binding.editTextText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                binding.text.setText(s.toString());
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-        });
     }
+
+    // ここから
+    @Override
+    protected void onStart() {
+        super.onStart();
+        prefDataStore.getString("name")
+                .ifPresent(name -> binding.text.setText(name));
+    }
+    // ここまで
 }
