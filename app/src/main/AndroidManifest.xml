@@ -12,6 +12,10 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".MainActivity3"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +23,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
